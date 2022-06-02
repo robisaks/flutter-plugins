@@ -860,7 +860,7 @@ class HealthPlugin(private var channel: MethodChannel? = null) : MethodCallHandl
     val start = call.argument<Long>("startTime")!!
     val end = call.argument<Long>("endTime")!!
 
-    val activity = activity ?: return
+    val activity = context ?: return
 
     val stepsDataType = keyToHealthDataType(STEPS)
     val aggregatedDataType = keyToHealthDataType(AGGREGATE_STEP_COUNT)
