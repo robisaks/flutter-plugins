@@ -498,7 +498,7 @@ class HealthPlugin(private var channel: MethodChannel? = null) : MethodCallHandl
         GoogleSignIn.getAccountForExtension(context!!.applicationContext, fitnessOptions)
       if (!GoogleSignIn.hasPermissions(googleSignInAccount, fitnessOptions)) {
         GoogleSignIn.requestPermissions(
-          context!!,
+          activity!!,
           GOOGLE_FIT_PERMISSIONS_REQUEST_CODE,
           googleSignInAccount,
           fitnessOptions
@@ -587,7 +587,7 @@ class HealthPlugin(private var channel: MethodChannel? = null) : MethodCallHandl
           // as it is restricted data
           if (!GoogleSignIn.hasPermissions(googleSignInAccount, fitnessOptions)) {
             GoogleSignIn.requestPermissions(
-              context!!, // your activity
+              activity!!, // your activity
               GOOGLE_FIT_PERMISSIONS_REQUEST_CODE,
               googleSignInAccount,
               fitnessOptions
@@ -844,7 +844,7 @@ class HealthPlugin(private var channel: MethodChannel? = null) : MethodCallHandl
     /// Not granted? Ask for permission
     if (!isGranted && activity != null) {
       GoogleSignIn.requestPermissions(
-        context!!,
+        activity!!,
         GOOGLE_FIT_PERMISSIONS_REQUEST_CODE,
         GoogleSignIn.getLastSignedInAccount(context!!),
         optionsToRegister
